@@ -258,8 +258,7 @@ var saveDataAsync = function (ctx) {
 
 //keyboard
 const keyboard = Markup.inlineKeyboard([
-  Markup.callbackButton('Continue', 'twitter'),
-  Markup.callbackButton('Skip Registrations', 'intro'),], {
+  Markup.callbackButton('I have Registered', 'intro'),], {
   columns: 1,
 });
 
@@ -270,7 +269,7 @@ function firstMessage(ctx) {
   finalResult += '\n';
   finalResult += '\n';
   finalResult +=
-    'Please register to continue using this bot';
+    'Please register at @CypherFundBot to continue using this bot';
   finalResult += '\n';
   finalResult += '\n';
   finalResult += 'By proceeding to use the bot, you confirm that you have read and agreed to our Terms and Service.';
@@ -504,7 +503,7 @@ bot.action('Journey', (ctx) => {
     Markup.callbackButton('Dex (Liq Trade)', 'dexlist'),
     Markup.callbackButton('Cex (Sniper)', 'cexlist'),
     Markup.callbackButton('Dex (Sniper)', 'dexlist'),
-    Markup.callbackButton('More', 'comingsoon'),], {
+    Markup.callbackButton('More', 'more'),], {
     columns: 2,
   });
   ctx.reply(msg, Extra.HTML().markup(keyboard));
@@ -523,12 +522,21 @@ bot.action('influencerlist', (ctx) => {
     Markup.callbackButton('GROOT', 'comingsoon'),
     Markup.callbackButton('THOR', 'comingsoon'),
     Markup.callbackButton('LOKI', 'comingsoon'),
-    Markup.callbackButton('More', 'comingsoon'),], {
+    Markup.callbackButton('More', 'more'),], {
     columns: 2,
   });
   ctx.reply(msg, Extra.HTML().markup(keyboard));
 });
 
+//more
+bot.action('more', (ctx) => {
+  var msg = 'More options are <b>COMING SOON!!!</b>';
+  var keyboard = Markup.inlineKeyboard([
+    Markup.callbackButton('Back To Journey', 'Journey'),], {
+    columns: 1,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
 //cypherbotai
 bot.action('cypherbotai', (ctx) => {
   var msg = 'Select the mode you want to do with <b>CypherBOT AI</b>';
@@ -558,7 +566,7 @@ bot.action('cexlist', (ctx) => {
     Markup.callbackButton('BITFINEX', 'comingsoon'),
     Markup.callbackButton('HUOBI', 'comingsoon'),
     Markup.callbackButton('BITMEX', 'comingsoon'),
-    Markup.callbackButton('More', 'comingsoon'),], {
+    Markup.callbackButton('More', 'more'),], {
     columns: 2,
     });
     ctx.reply(msg, Extra.HTML().markup(keyboard));
@@ -582,14 +590,14 @@ bot.action('dexlist', (ctx) => {
     Markup.callbackButton('ApolloX', 'comingsoon'),
     Markup.callbackButton('KlaySwap', 'comingsoon'),
     Markup.callbackButton('SushiSwap', 'comingsoon'),
-    Markup.callbackButton('More', 'comingsoon'),], {
+    Markup.callbackButton('More', 'more'),], {
     columns: 2,
     });
     ctx.reply(msg, Extra.HTML().markup(keyboard));
   });
 
   bot.action('comingsoon', (ctx) => {
-    var msg = '<b>COMING SOON!!!</b>';
+    var msg = 'Sorry! You must have at least one <b>cBot License</b> to use this bot!!!';
         msg += '\n'
         msg += '\n'
         msg += '<i>ⓒ 2023 CypherBOT, Tech.</i>'
