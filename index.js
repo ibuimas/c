@@ -265,20 +265,20 @@ const keyboard = Markup.inlineKeyboard([
 function firstMessage(ctx) {
   var finalResult;
 
-  finalResult = `Welcome @${ctx.session.username} to CypherCAT!`;
+  finalResult = `👋Welcome @${ctx.session.username} to CypherCAT!`;
   finalResult += '\n';
   finalResult += '\n';
   finalResult +=
-    'Please register at @CypherFundBot to continue using this bot';
+    '❗️Please register at @CypherFundBot to continue using this bot';
   finalResult += '\n';
   finalResult += '\n';
-  finalResult += 'By proceeding to use the bot, you confirm that you have read and agreed to our Terms and Service.';
+  finalResult += '📝By proceeding to use the bot, you confirm that you have read and agreed to our Terms and Service.';
   finalResult += '\n';
-  finalResult += 'Cypherbot.tech ensures that your information will be treated confidentially.';
+  finalResult += '🔏Cypherbot.tech ensures that your information will be treated confidentially.';
   finalResult += '\n';
   finalResult += '\n';
   finalResult +=
-    '**ⓒ 2023 CypherBOT, Tech.**';
+    'ⓒ 2023 CypherBOT, Tech.';
   // finalResult += '\n';
   // finalResult += '\n';
   // finalResult += '1.📌 Submit your receiver ETH address.';
@@ -296,7 +296,7 @@ function firstMessage(ctx) {
 
 async function check(ctx) {
   var finalResult;
-  finalResult = '1. Submitted BEP20 address';
+  finalResult = '1. Submitted ERC20/BEP20 address';
   if (ctx.session.eth) {
     finalResult += ' ✅';
   } else {
@@ -362,20 +362,20 @@ async function stepCheck(ctx) {
   if (ctx.session.step == 2) {
     ctx.session.twitter = ctx.message.text;
     ctx.session.step = 3;
-    ctx.reply('Please send your wallet address');
+    ctx.reply('💲Please send your wallet address');
   } else if (ctx.session.step == 3) {
     if (ethereum_address.isAddress(ctx.message.text.toString())) {
       ctx.session.eth = ctx.message.text.toString();
-      var keyboard = Markup.inlineKeyboard([Markup.callbackButton('Complete✅', 'intro')], {
+      var keyboard = Markup.inlineKeyboard([Markup.callbackButton('✅Complete✅', 'intro')], {
         columns: 1,
       });
       ctx.telegram.sendMessage(
         ctx.from.id,
-        'Hit Complete✅ button to submit your registration.',
+        'Hit ✅Complete✅ button to submit your registration.',
         Extra.HTML().markup(keyboard)
       );
     } else {
-      ctx.reply('Please input a valid wallet address!');
+      ctx.reply('❗️Please input a valid wallet address!❗️');
     }
   } else {
     console.log('other data');
@@ -397,7 +397,7 @@ bot.start(async (ctx) => {
     var len = ctx.message.text.length;
     if (ctx.from.username == null) {
       //user must have a valid username set.
-      var nousrmsg = 'Please set a username first then contact the bot again!';
+      var nousrmsg = '❗️Please set a username first then contact the bot again!';
       ctx.telegram.sendMessage(ctx.from.id, nousrmsg);
     } else {
       ctx.session.username = ctx.from.username;
@@ -429,7 +429,7 @@ bot.start(async (ctx) => {
 bot.on('message', async (ctx) => {
   //bot listens to any message
   if (ctx.from.username == null) {
-    var nousrmsg = 'Please set a username first then contact the bot again!!!!!';
+    var nousrmsg = '❗️Please set a username first then contact the bot again!!!!!';
     ctx.telegram.sendMessage(ctx.from.id, ctx.from);
     ctx.telegram.sendMessage(ctx.from.id, nousrmsg);
   } else {
@@ -467,33 +467,33 @@ bot.action('delete', ({ deleteMessage }) => deleteMessage());
 
 bot.action('eth', (ctx) => {
   //button click ETH
-  ctx.reply('Please send your wallet address here.');
+  ctx.reply('💲Please send your wallet address here.');
   ctx.session.step = 3;
 });
 
 bot.action('intro', (ctx) => {
   ctx.session.step = 1;
-  var msg = '<b>Make sure you are followed our X/Twitter and joined our Telegram group to continuesly using this bot.</b>';
+  var msg = '🤖<b>Make sure you are followed our X/Twitter and joined our Telegram group to continuesly using this bot.</b>';
   msg += '\n';
   msg += '\n';
   msg +=
-    'Follow us on <a href="https://twitter.com/cypherbottech">X</a>';
+    '✅Follow us on <a href="https://twitter.com/cypherbottech">X</a>';
   msg += '\n';
-  msg += 'Join our <a href="https://t.me/cypherbotofficial">Telegram</a> Group';
+  msg += '✅Join our <a href="https://t.me/cypherbotofficial">Telegram</a> Group';
   msg += '\n';
   msg += '\n';
-  msg += '<a href="https://twitter.com/cypherbottech">CypherBOT</a>';
-  var keyboard = Markup.inlineKeyboard([Markup.callbackButton('Start Journey', 'Journey')], {
+  msg += '<a href="https://twitter.com/cypherbottech">🌐CypherBOT</a>';
+  var keyboard = Markup.inlineKeyboard([Markup.callbackButton('🔥Start Journey🔥', 'Journey')], {
     columns: 1,
   });
   ctx.reply(msg, Extra.HTML().markup(keyboard));
 });
 //Journey
 bot.action('Journey', (ctx) => {
-  var msg = '<b>Here You Go!</b>';
+  var msg = '🔥<b>Here You Go!</b>🔥';
   msg += '\n';
   msg += '\n';
-  msg += 'Select one of the trade types you want';
+  msg += '👇Select one of the trade types you want👇';
   var keyboard = Markup.inlineKeyboard([
     Markup.callbackButton('CopyTrade Influencer', 'influencerlist'),
     Markup.callbackButton('CopyTrade CypherBOT AI', 'cypherbotai'),
@@ -510,19 +510,104 @@ bot.action('Journey', (ctx) => {
 });
 //influencerlist
 bot.action('influencerlist', (ctx) => {
-  var msg = 'Select the influencer you want to copy to get started';
+  var msg = '👇Select the influencer you want to copy to get started👇';
+  msg += '\n'
+  msg += '\n'
+      msg += '✅ Available Copy Trade';
+      msg += '\n'
+      msg += '❌ Unavailable Copy Trade';
   var keyboard = Markup.inlineKeyboard([
-    Markup.callbackButton('STAR LORD', 'comingsoon'),
-    Markup.callbackButton('ROCKET', 'comingsoon'),
-    Markup.callbackButton('GAMORA', 'comingsoon'),
-    Markup.callbackButton('NEBULA', 'comingsoon'),
-    Markup.callbackButton('YONDU', 'comingsoon'),
-    Markup.callbackButton('DRAKE', 'comingsoon'),
-    Markup.callbackButton('MANTIS', 'comingsoon'),
-    Markup.callbackButton('GROOT', 'comingsoon'),
-    Markup.callbackButton('THOR', 'comingsoon'),
-    Markup.callbackButton('LOKI', 'comingsoon'),
-    Markup.callbackButton('More', 'more'),], {
+    Markup.callbackButton('STAR LORD✅', 'tradeopt'),
+    Markup.callbackButton('ROCKET❌', 'comingsoon'),
+    Markup.callbackButton('GAMORA❌', 'comingsoon'),
+    Markup.callbackButton('NEBULA❌', 'comingsoon'),
+    Markup.callbackButton('YONDU❌', 'comingsoon'),
+    Markup.callbackButton('DRAKE❌', 'comingsoon'),
+    Markup.callbackButton('MANTIS❌', 'comingsoon'),
+    Markup.callbackButton('GROOT❌', 'comingsoon'),
+    Markup.callbackButton('THOR❌', 'comingsoon'),
+    Markup.callbackButton('LOKI❌', 'comingsoon'),
+    Markup.callbackButton('◀️ More ▶️', 'more'),], {
+    columns: 2,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+
+//starlord
+bot.action('starlord', (ctx) => {
+  var msg = '🔥Here are upto date data from STARLORD🔥';
+      msg += '\n';
+      msg += '\n';
+      msg += '<b>TF: 5 MINUTES</b>';
+      msg += '\n';
+      msg += '📊CRYPTO IDX';
+      msg += '\n';
+      msg += '01.00	BUY🟢';
+      msg += '\n';
+      msg += '02.00	BUY🟢';
+      msg += '\n';
+      msg += '03.00	SELL🔴';
+      msg += '\n';
+      msg += '04.00	BUY🟢';
+      msg += '\n';
+      msg += '05.00	SELL🔴';
+      msg += '\n';
+      msg += '06.00	SELL🔴';
+      msg += '\n';
+      msg += '07.00	BUY🟢';
+      msg += '\n';
+      msg += '08.00	BUY🟢';
+      msg += '\n';
+      msg += '09.00	BUY🟢';
+      msg += '\n';
+      msg += '10.00	SELL🔴';
+      msg += '\n';
+      msg += '11.00	BUY🟢';
+      msg += '\n';
+      msg += '12.00	BUY🟢';
+      msg += '\n';
+      msg += '\n';
+      msg += '<b>TF: 5 MINUTES</b>';
+      msg += '\n';
+      msg += '📊EUR USD';
+      msg += '\n';
+      msg += '01.00 SELL🔴';
+      msg += '\n';
+      msg += '02.00 BUY🟢';
+      msg += '\n';
+      msg += '03.00 SELL🔴';
+      msg += '\n';
+      msg += '04.00 SELL🔴';
+      msg += '\n';
+      msg += '05.00 BUY🟢';
+      msg += '\n';
+      msg += '06.00 BUY🟢';
+      msg += '\n';
+      msg += '07.00 BUY🟢';
+      msg += '\n';
+      msg += '08.00 SELL🔴';
+      msg += '\n';
+      msg += '09.00 BUY🟢';
+      msg += '\n';
+      msg += '10.00 SELL🔴';
+      msg += '\n';
+      msg += '11.00 BUY🟢';
+      msg += '\n';
+      msg += '12.00 BUY🟢';
+  var keyboard = Markup.inlineKeyboard([
+    Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
+    columns: 1,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+
+//tradeopt
+bot.action('tradeopt', (ctx) => {
+  var msg = '👇Please Select Trade Options👇';
+  var keyboard = Markup.inlineKeyboard([
+    Markup.callbackButton('🙍🏻‍♂️Manual', 'starlord'),
+    Markup.callbackButton('🤖CypherCat AI', 'cypherbotai'),
+    Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
     columns: 2,
   });
   ctx.reply(msg, Extra.HTML().markup(keyboard));
@@ -530,19 +615,20 @@ bot.action('influencerlist', (ctx) => {
 
 //more
 bot.action('more', (ctx) => {
-  var msg = 'More options are <b>COMING SOON!!!</b>';
+  var msg = '🔥🔥More options are <b>COMING SOON!!!</b>🔥🔥';
   var keyboard = Markup.inlineKeyboard([
-    Markup.callbackButton('Back To Journey', 'Journey'),], {
+    Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
     columns: 1,
   });
   ctx.reply(msg, Extra.HTML().markup(keyboard));
 });
+
 //cypherbotai
 bot.action('cypherbotai', (ctx) => {
-  var msg = 'Select the mode you want to do with <b>CypherBOT AI</b>';
+  var msg = '👇Select the mode you want to do with <b>CypherBOT AI</b>👇';
   var keyboard = Markup.inlineKeyboard([
-    Markup.callbackButton('Auto Mode', 'comingsoon'),
-    Markup.callbackButton('Semi Auto Mode', 'comingsoon'),], {
+    Markup.callbackButton('🤖Auto Mode🤖', 'comingsoon'),
+    Markup.callbackButton('🦾Semi Auto Mode🦿', 'comingsoon'),], {
     columns: 2,
   });
   ctx.reply(msg, Extra.HTML().markup(keyboard));
@@ -550,9 +636,9 @@ bot.action('cypherbotai', (ctx) => {
 
 //cexlist
 bot.action('cexlist', (ctx) => {
-  var msg = 'Select the CEX you want to get started';
+  var msg = '👇Select the CEX you want to get started👇';
   var keyboard = Markup.inlineKeyboard([
-    Markup.callbackButton('BINANCE', 'comingsoon'),
+    Markup.callbackButton('BINANCE', 'binanceopt'),
     Markup.callbackButton('OKX', 'comingsoon'),
     Markup.callbackButton('MEXC', 'comingsoon'),
     Markup.callbackButton('BYBIT', 'comingsoon'),
@@ -572,9 +658,121 @@ bot.action('cexlist', (ctx) => {
     ctx.reply(msg, Extra.HTML().markup(keyboard));
   });
 
+//binanceopt
+bot.action('binanceopt', (ctx) => {
+  var msg = '❗️Make sure once again your choices!';
+  var keyboard = Markup.inlineKeyboard([ 
+    Markup.callbackButton('❗️Future Trade❗️', 'future'),
+    Markup.callbackButton('❗️Spot Trade❗️', 'more'),
+    Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
+    columns: 2,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+
+//future Trade
+bot.action('future', (ctx) => {
+  var msg = '👇Select available coin👇';
+  var keyboard = Markup.inlineKeyboard([ 
+    Markup.callbackButton('BTC', 'btcopt'),
+    Markup.callbackButton('ETH', 'more'),
+    Markup.callbackButton('BNB', 'more'),
+    Markup.callbackButton('AVAX', 'more'),
+    Markup.callbackButton('XRP', 'more'),
+    Markup.callbackButton('LTC', 'more'),
+    Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
+    columns: 2,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+
+//btcopt
+bot.action('btcopt', (ctx) => {
+  var msg = '👇Select margin type!👇';
+  var keyboard = Markup.inlineKeyboard([ 
+    Markup.callbackButton('❌Cross❌', 'margin'),
+    Markup.callbackButton('❎Isolated❎', 'margin'),
+    Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
+    columns: 2,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+
+//margin
+bot.action('margin', (ctx) => {
+  var msg = '👇Select total margin trade!👇';
+  var keyboard = Markup.inlineKeyboard([ 
+    Markup.callbackButton('10%', 'more'),
+    Markup.callbackButton('20%', 'leverage'),
+    Markup.callbackButton('30%', 'more'),
+    Markup.callbackButton('40%', 'leverage'),
+    Markup.callbackButton('50%', 'more'),
+    Markup.callbackButton('60%', 'leverage'),
+    Markup.callbackButton('70%', 'more'),
+    Markup.callbackButton('80%', 'leverage'),
+    Markup.callbackButton('90%', 'more'),
+    Markup.callbackButton('100%', 'leverage'),
+    Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
+    columns: 2,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+
+//leverage
+bot.action('leverage', (ctx) => {
+  var msg = '👇Select Leverage!👇';
+  var keyboard = Markup.inlineKeyboard([ 
+    Markup.callbackButton('10x', 'more'),
+    Markup.callbackButton('25x', 'more'),
+    Markup.callbackButton('50x', 'more'),
+    Markup.callbackButton('75x', 'more'),
+    Markup.callbackButton('100x', 'more'),
+    Markup.callbackButton('125x', 'cross125'),
+    Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
+    columns: 2,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+//cross
+//cross
+//cross
+//cross
+//cross
+//cross125
+bot.action('cross125', (ctx) => {
+  var msg = '❗️Confirm this transactions❗️';
+  var keyboard = Markup.inlineKeyboard([ 
+    Markup.callbackButton('✅Confirm✅', 'wait'),
+    Markup.callbackButton('❌Cancel❌', 'Journey'),], {
+    columns: 1,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+
+//wait
+bot.action('wait', (ctx) => {
+  var msg = '✅Order Received! Our 🤖CypherBOT AI Trade is working on your order.';
+  var keyboard = Markup.inlineKeyboard([ 
+    Markup.callbackButton('✔️ Check Status ✔️', 'status'),], {
+    columns: 2,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+
+//status
+bot.action('status', (ctx) => {
+  var msg = '⭕️Please wait!⭕️';
+  var keyboard = Markup.inlineKeyboard([ 
+    Markup.callbackButton('🔄Refresh!🔄', 'status'),
+    Markup.callbackButton('🔥Main Menu🔥', 'Journey'),], {
+    columns: 1,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+
   //dexlist
 bot.action('dexlist', (ctx) => {
-  var msg = 'Select the DEX you want to get started';
+  var msg = '👇Select the DEX you want to get started👇';
   var keyboard = Markup.inlineKeyboard([
     Markup.callbackButton('dYdX', 'comingsoon'),
     Markup.callbackButton('Uniswap ARB', 'comingsoon'),
@@ -597,11 +795,11 @@ bot.action('dexlist', (ctx) => {
   });
 
   bot.action('comingsoon', (ctx) => {
-    var msg = 'Sorry! You must have at least one <b>cBot License</b> to use this bot!!!';
+    var msg = '❗️Sorry! You must have at least one <b>cBot License</b> to use this bot!!!';
         msg += '\n'
         msg += '\n'
         msg += '<i>ⓒ 2023 CypherBOT, Tech.</i>'
-    var keyboard = Markup.inlineKeyboard([ Markup.callbackButton('Back To Journey', 'Journey'),], {
+    var keyboard = Markup.inlineKeyboard([ Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
       columns: 1,
     });
     ctx.reply(msg, Extra.HTML().markup(keyboard));
