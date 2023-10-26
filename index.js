@@ -627,8 +627,9 @@ bot.action('more', (ctx) => {
 bot.action('cypherbotai', (ctx) => {
   var msg = '👇Select the mode you want to do with <b>CypherBOT AI</b>👇';
   var keyboard = Markup.inlineKeyboard([
-    Markup.callbackButton('🤖Auto Mode🤖', 'comingsoon'),
-    Markup.callbackButton('🦾Semi Auto Mode🦿', 'comingsoon'),], {
+    Markup.callbackButton('🤖Auto Mode🤖', 'wait'),
+    Markup.callbackButton('🦾Semi Auto Mode🦿', 'btc'),
+  Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
     columns: 2,
   });
   ctx.reply(msg, Extra.HTML().markup(keyboard));
@@ -639,19 +640,19 @@ bot.action('cexlist', (ctx) => {
   var msg = '👇Select the CEX you want to get started👇';
   var keyboard = Markup.inlineKeyboard([
     Markup.callbackButton('BINANCE', 'binanceopt'),
-    Markup.callbackButton('OKX', 'comingsoon'),
-    Markup.callbackButton('MEXC', 'comingsoon'),
-    Markup.callbackButton('BYBIT', 'comingsoon'),
-    Markup.callbackButton('KUCOIN', 'comingsoon'),
-    Markup.callbackButton('BITGET', 'comingsoon'),
-    Markup.callbackButton('BITMART', 'comingsoon'),
-    Markup.callbackButton('GATE.IO', 'comingsoon'),
-    Markup.callbackButton('DERIBIT', 'comingsoon'),
-    Markup.callbackButton('KRAKEN', 'comingsoon'),
-    Markup.callbackButton('BITMART', 'comingsoon'),
-    Markup.callbackButton('BITFINEX', 'comingsoon'),
-    Markup.callbackButton('HUOBI', 'comingsoon'),
-    Markup.callbackButton('BITMEX', 'comingsoon'),
+    Markup.callbackButton('OKX', 'binanceopt'),
+    Markup.callbackButton('MEXC', 'binanceopt'),
+    Markup.callbackButton('BYBIT', 'binanceopt'),
+    Markup.callbackButton('KUCOIN', 'binanceopt'),
+    Markup.callbackButton('BITGET', 'binanceopt'),
+    Markup.callbackButton('BITMART', 'binanceopt'),
+    Markup.callbackButton('GATE.IO', 'binanceopt'),
+    Markup.callbackButton('DERIBIT', 'binanceopt'),
+    Markup.callbackButton('KRAKEN', 'binanceopt'),
+    Markup.callbackButton('BITMART', 'binanceopt'),
+    Markup.callbackButton('BITFINEX', 'binanceopt'),
+    Markup.callbackButton('HUOBI', 'binanceopt'),
+    Markup.callbackButton('BITMEX', 'binanceopt'),
     Markup.callbackButton('More', 'more'),], {
     columns: 2,
     });
@@ -663,7 +664,44 @@ bot.action('binanceopt', (ctx) => {
   var msg = '❗️Make sure once again your choices!';
   var keyboard = Markup.inlineKeyboard([ 
     Markup.callbackButton('❗️Future Trade❗️', 'future'),
-    Markup.callbackButton('❗️Spot Trade❗️', 'more'),
+    Markup.callbackButton('❗️Spot Trade❗️', 'spot'),
+    Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
+    columns: 2,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+
+//spot Trade
+bot.action('spot', (ctx) => {
+  var msg = '👇Select available coin/token👇';
+      msg += '\n'
+      msg += 'More coin/token are comingsoon';
+  var keyboard = Markup.inlineKeyboard([ 
+    Markup.callbackButton('BTC', 'btc'),
+    Markup.callbackButton('ETH', 'btc'),
+    Markup.callbackButton('BNB', 'btc'),
+    Markup.callbackButton('AVAX', 'btc'),
+    Markup.callbackButton('XRP', 'btc'),
+    Markup.callbackButton('LTC', 'btc'),
+    Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
+    columns: 2,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+//btc
+bot.action('btc', (ctx) => {
+  var msg = '👇What percentage of the total balance do you want to use on this trade?👇';
+  var keyboard = Markup.inlineKeyboard([ 
+    Markup.callbackButton('10%', 'cross'),
+    Markup.callbackButton('20%', 'cross'),
+    Markup.callbackButton('30%', 'cross'),
+    Markup.callbackButton('40%', 'cross'),
+    Markup.callbackButton('50%', 'cross'),
+    Markup.callbackButton('60%', 'cross'),
+    Markup.callbackButton('70%', 'cross'),
+    Markup.callbackButton('80%', 'cross'),
+    Markup.callbackButton('90%', 'cross'),
+    Markup.callbackButton('100%', 'cross'),
     Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
     columns: 2,
   });
@@ -675,11 +713,11 @@ bot.action('future', (ctx) => {
   var msg = '👇Select available coin👇';
   var keyboard = Markup.inlineKeyboard([ 
     Markup.callbackButton('BTC', 'btcopt'),
-    Markup.callbackButton('ETH', 'more'),
-    Markup.callbackButton('BNB', 'more'),
-    Markup.callbackButton('AVAX', 'more'),
-    Markup.callbackButton('XRP', 'more'),
-    Markup.callbackButton('LTC', 'more'),
+    Markup.callbackButton('ETH', 'btcopt'),
+    Markup.callbackButton('BNB', 'btcopt'),
+    Markup.callbackButton('AVAX', 'btcopt'),
+    Markup.callbackButton('XRP', 'btcopt'),
+    Markup.callbackButton('LTC', 'btcopt'),
     Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
     columns: 2,
   });
@@ -702,15 +740,15 @@ bot.action('btcopt', (ctx) => {
 bot.action('margin', (ctx) => {
   var msg = '👇Select total margin trade!👇';
   var keyboard = Markup.inlineKeyboard([ 
-    Markup.callbackButton('10%', 'more'),
+    Markup.callbackButton('10%', 'leverage'),
     Markup.callbackButton('20%', 'leverage'),
-    Markup.callbackButton('30%', 'more'),
+    Markup.callbackButton('30%', 'leverage'),
     Markup.callbackButton('40%', 'leverage'),
-    Markup.callbackButton('50%', 'more'),
+    Markup.callbackButton('50%', 'leverage'),
     Markup.callbackButton('60%', 'leverage'),
-    Markup.callbackButton('70%', 'more'),
+    Markup.callbackButton('70%', 'leverage'),
     Markup.callbackButton('80%', 'leverage'),
-    Markup.callbackButton('90%', 'more'),
+    Markup.callbackButton('90%', 'leverage'),
     Markup.callbackButton('100%', 'leverage'),
     Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
     columns: 2,
@@ -722,12 +760,12 @@ bot.action('margin', (ctx) => {
 bot.action('leverage', (ctx) => {
   var msg = '👇Select Leverage!👇';
   var keyboard = Markup.inlineKeyboard([ 
-    Markup.callbackButton('10x', 'more'),
-    Markup.callbackButton('25x', 'more'),
-    Markup.callbackButton('50x', 'more'),
-    Markup.callbackButton('75x', 'more'),
-    Markup.callbackButton('100x', 'more'),
-    Markup.callbackButton('125x', 'cross125'),
+    Markup.callbackButton('10x', 'cross'),
+    Markup.callbackButton('25x', 'cross'),
+    Markup.callbackButton('50x', 'cross'),
+    Markup.callbackButton('75x', 'cross'),
+    Markup.callbackButton('100x', 'cross'),
+    Markup.callbackButton('125x', 'cross'),
     Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
     columns: 2,
   });
@@ -739,7 +777,7 @@ bot.action('leverage', (ctx) => {
 //cross
 //cross
 //cross125
-bot.action('cross125', (ctx) => {
+bot.action('cross', (ctx) => {
   var msg = '❗️Confirm this transactions❗️';
   var keyboard = Markup.inlineKeyboard([ 
     Markup.callbackButton('✅Confirm✅', 'wait'),
@@ -774,20 +812,20 @@ bot.action('status', (ctx) => {
 bot.action('dexlist', (ctx) => {
   var msg = '👇Select the DEX you want to get started👇';
   var keyboard = Markup.inlineKeyboard([
-    Markup.callbackButton('dYdX', 'comingsoon'),
-    Markup.callbackButton('Uniswap ARB', 'comingsoon'),
-    Markup.callbackButton('Kine Protocol Matic', 'comingsoon'),
-    Markup.callbackButton('Uniswap ETH', 'comingsoon'),
-    Markup.callbackButton('Pancake BSC', 'comingsoon'),
-    Markup.callbackButton('Curve', 'comingsoon'),
-    Markup.callbackButton('Apex Protocol', 'comingsoon'),
-    Markup.callbackButton('DODO BSC', 'comingsoon'),
-    Markup.callbackButton('DODO ETH', 'comingsoon'),
-    Markup.callbackButton('BaseSwap', 'comingsoon'),
-    Markup.callbackButton('OpenOcean', 'comingsoon'),
-    Markup.callbackButton('ApolloX', 'comingsoon'),
-    Markup.callbackButton('KlaySwap', 'comingsoon'),
-    Markup.callbackButton('SushiSwap', 'comingsoon'),
+    Markup.callbackButton('dYdX', 'more'),
+    Markup.callbackButton('Uniswap ARB', 'more'),
+    Markup.callbackButton('Kine Protocol Matic', 'more'),
+    Markup.callbackButton('Uniswap ETH', 'more'),
+    Markup.callbackButton('Pancake BSC', 'more'),
+    Markup.callbackButton('Curve', 'more'),
+    Markup.callbackButton('Apex Protocol', 'more'),
+    Markup.callbackButton('DODO BSC', 'more'),
+    Markup.callbackButton('DODO ETH', 'more'),
+    Markup.callbackButton('BaseSwap', 'more'),
+    Markup.callbackButton('OpenOcean', 'more'),
+    Markup.callbackButton('ApolloX', 'more'),
+    Markup.callbackButton('KlaySwap', 'more'),
+    Markup.callbackButton('SushiSwap', 'more'),
     Markup.callbackButton('More', 'more'),], {
     columns: 2,
     });
