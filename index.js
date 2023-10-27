@@ -495,6 +495,7 @@ bot.action('Journey', (ctx) => {
   msg += '\n';
   msg += '👇Select one of the trade types you want👇';
   var keyboard = Markup.inlineKeyboard([
+    Markup.callbackButton('Influencer Call', 'call'),
     Markup.callbackButton('CopyTrade Influencer', 'influencerlist'),
     Markup.callbackButton('CopyTrade CypherBOT AI', 'cypherbotai'),
     Markup.callbackButton('Cex (Spot Trade)', 'cexlist'),
@@ -505,6 +506,106 @@ bot.action('Journey', (ctx) => {
     Markup.callbackButton('Dex (Sniper)', 'dexlist'),
     Markup.callbackButton('More', 'more'),], {
     columns: 2,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+//call
+bot.action('call', (ctx) => {
+  var msg = '👇Select the influencer call you want to copy to get started👇';
+  msg += '\n'
+  msg += '\n'
+   msg += '@ScarlettCalls'
+      msg += '\n'
+ msg += '@EmiLyscrypto'
+      msg += '\n'
+ msg += 'ZerolixCalls'
+      msg += '\n'
+ msg += '@mrconquerorcalls'
+      msg += '\n'
+ msg += '@LucifeRCalls1'
+      msg += '\n'
+ msg += '@AZOG_Calls'
+      msg += '\n'
+ msg += '@southparkinvestorschannel'
+      msg += '\n'
+ msg += '@JordanCalls'
+      msg += '\n'
+ msg += '@MooCalls'
+      msg += '\n'
+ msg += '@OneForAll_Channel'
+      msg += '\n'
+ msg += '@WhaleMansion'
+      msg += '\n'
+ msg += '@Sherlock_CaLL'
+      msg += '\n'
+ msg += '@MarkGems'
+      msg += '\n'
+ msg += '@SKYRIMCALL'
+      msg += '\n'
+ msg += '@TheWizardsGems'
+      msg += '\n'
+ msg += '@republic_of_defi_ann'
+      msg += '\n'
+ msg += '@HellsingCalls'
+      msg += '\n'
+  var keyboard = Markup.inlineKeyboard([
+  Markup.callbackButton('🔥More🔥', 'morecall'),
+  Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
+    columns: 1,
+  });
+  ctx.reply(msg, Extra.HTML().markup(keyboard));
+});
+
+bot.action('morecall', (ctx) => {
+  var msg = '👇Select the influencer call you want to copy to get started👇';
+  msg += '\n'
+  msg += '\n'
+msg += '@CarsosCalls'
+      msg += '\n'
+ msg += '@HULKSGEMSCALLS'
+      msg += '\n'
+ msg += '@buihongx1000'
+      msg += '\n'
+ msg += '@spartancryptocalls'
+      msg += '\n'
+ msg += '@ICC_ANNOUNCEMENT'
+      msg += '\n'
+ msg += '@WhoDis6964'
+      msg += '\n'
+ msg += '@Saphira_Calls'
+      msg += '\n'
+ msg += '@FurkzCallz'
+      msg += '\n'
+ msg += '@Future_Lounge_Calls'
+      msg += '\n'
+ msg += '@gem_radar'
+      msg += '\n'
+ msg += '@DoctoreCoins'
+      msg += '\n'
+ msg += '@EliteCryptoLounge'
+      msg += '\n'
+ msg += '@FMZDPlugs'
+      msg += '\n'
+ msg += '@OmegleCalls'
+      msg += '\n'
+ msg += '@doctoreclub'
+  msg += '\n'
+  msg += '@Chadleycalls'
+      msg += '\n'
+ msg += '@crypto_millennial'
+      msg += '\n'
+ msg += '@sonicwhalescalls'
+      msg += '\n'
+ msg += '@doctoregems'
+  msg += '\n'
+  msg += '@SteveCryptoReviews'
+  msg += '\n'
+  msg += '@presidentcalls'
+      msg += '\n'
+ msg += '@cryptocatcalls'
+  var keyboard = Markup.inlineKeyboard([
+  Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
+    columns: 1,
   });
   ctx.reply(msg, Extra.HTML().markup(keyboard));
 });
@@ -527,7 +628,8 @@ bot.action('influencerlist', (ctx) => {
     Markup.callbackButton('GROOT❌', 'comingsoon'),
     Markup.callbackButton('THOR❌', 'comingsoon'),
     Markup.callbackButton('LOKI❌', 'comingsoon'),
-    Markup.callbackButton('◀️ More ▶️', 'more'),], {
+    Markup.callbackButton('◀️ More ▶️', 'more'),
+  Markup.callbackButton('🔥Back To Journey🔥', 'Journey'),], {
     columns: 2,
   });
   ctx.reply(msg, Extra.HTML().markup(keyboard));
